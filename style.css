@@ -1,0 +1,198 @@
+* {
+    /* ASK: border-box dodaje nam ramke?! miedzy body , w projekcie brak odstepu od body*/
+    box-sizing: border-box;
+    color: white;
+    /* ASK: czemu wyrownuje centruje w poziomie w flex jest inaczej?*/
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: uppercase;
+    /* ASK: kolory moje */
+    /* #ff0000,#00ffff,#008000,#ffc0cb,#8a2be2 */
+    /* ASK: kolory kod */
+    /* red,blue(aqua),green,pink,violet */
+    /* ASK : kolory projekt */
+    /* #ff4500,#00bfff,#228b22,#ffb6c1,#9370db */
+    /* ASK: jak zmiezyc szerokosc z *.png z projektu? */
+    /* ASK: z with na max-with pomoglo do auto zwijania ponizej mobilnych 450px*/
+    /* ASK: czy ta wartosc w *body ustawione przeszkadza zmianie w max-with w @media?! */
+    /* max-width: 450px; */
+    /* ASK: nie zwija ponizej 450px */
+    /* width: 450px; */
+    
+    /* width: 660px; */
+
+}
+header {
+    background-color: red;
+}
+section {
+}
+footer {
+    background-color: blueviolet;
+}
+header,footer {
+    /* ASK: wysrodkowanie w pionie tekstu inaczej nie moge tylko padding */
+    /* ASK: mimo paddingu top bottom 10px nie rowny odstep teks w pionie?!  */
+    /* padding: 10px 0px; */
+    /* ASK: paddin to jest odstep boxa od body?! padding wylaczam na naglowkach */
+    /* ASK : nie dziala wyrownanie w pionie dla hedader */
+    /* text-align: center; */
+    /* text-justify: auto; */
+    /* border: 1px solid black; */
+    /* text-transform: uppercase; */
+    /* ASK: wwysokosc nie dzila? */
+    /* height: 30%; */
+    /* ASK: ten paddin nie rowny powyzej height 42px jest niewidoczny ?! zludzenie  */
+    height: 41px;
+}
+.aside-right{
+    background-color: pink;
+    /* text-transform: uppercase; */
+}
+.aside-left {
+    background-color: green;
+    /* text-transform: uppercase; */
+}
+article {
+}
+.myParagraph {
+    /* ASK: tekst w projekcie zachowuje sie jakby byl bez 
+    paragrafu w div, przyklejony do sufitu dlatego usunalem paragraf */
+    /* ASK: co mi centruje/ padding top teskst w div /paragraf?  */
+    background-color: aqua;
+}
+.container {
+    /* width: 600px; */
+    /* ASK: wysokosc containera jest ustalona przez najdluzszy element child tuttaj to id 3 aside-right teraz na poz order 1 */
+    /* height: 800px;  */
+    /* background-color: gray; */
+    /* border: 1px solid black; */
+    /* padding: 10px; */
+    display: flex;
+    /* flex-direction: row; */
+    /* ASK: na mobilnym ponizej 768 w kolumnie */
+    flex-direction: column;
+    flex-flow: column;
+    
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
+    /* justify-content: space-evenly; */
+/* justify- (justować) wyrownac w poziomie, wiersze, odstepy marginesy */
+/* ASK : nie dziala! :ustawiamy justify-content:center centruje w kontenerze nasze 3 elementy      */
+justify-content: center;
+    /* width: 50%; */
+/* ASK:  align - (wyrównać) :ustawia elementy tylko w pionie  */
+ /* ASK: wylacza dzialanie align-self: flex-end?! bo dziecko rodzic? */
+    /* align-content: space-around; */
+    /* justify-content: space-between; */
+}
+.item {
+    /* ASK: dla kazdego ustawia tyle zamiast pojedynczo w nth-of-type */
+    /* ASK : jak wylacze heigth bo w trybie flex-direction column a row jest inaczej , chyba bylo nie potrzebne w columnowym jaka roznica?*/
+    /* ASK: .item height:290px wazne bo w kolumnowym proporcja 1/3 z3 po 30%   */
+    /* ASK : jako paren na f-basis ! nie dziala bo nie parent gdzie parent dla basis */
+    height: 290px;
+    /* flex-basis: 25%; */
+    /* flex-basis: 33%; */
+    /* flex: 2 0 25%; */
+    /*  ASK: szerokosc do 100px zmienil?a w pionie wyciagnal z tekstem */
+    /* flex-basis: 100px; */
+} 
+.item:nth-of-type(1) {
+    /* flex-basis: 25%; */
+    /* flex-basis: 33%; */
+    /* flex-basis: 80px; */
+    /* flex-basis: 280px; */
+    /* ASK: dlaczego element 1 z order 1 jest jako trzeci na koncu wczesniejsza pozycja */
+    /* ASK: tylko 0 dziala reszta przesuwa go na koniec lub 3poz */
+    /* order: 3; */
+    /* flex: 2 0 25%; */
+ /* wysokość skraca w pionie do 100px */
+ /* ASK: po wylaczeniu height wysokosci kontenera ta height wysokosc steruje calym kontenerem bo wypycha w pionie    */
+ /* height: 250px; */
+/* ASK: tez nie dziala przyklejenie do gory?! padding :off ? pomoglo*/
+    /* align-self: flex-start; */
+}
+.item:nth-of-type(2) {
+    /* flex: 5 0 25%; */
+    /* height: 250px;     */
+    /* ASK: nie wplywa na element bo tekst robi fill/strech ? nie skraca w pionie!*/
+    /* height: 100px; */
+    /* ASK: nie dziala przyklejenie do gory?! padding :off nie pomoglo bo tekst lorem?!*/
+    /* align-self: flex-start; */
+    /* ASK: czy te ordery to jest tak naprawde ofset?!! bo zadzialalo fuckoff */
+    order: -1;
+    /* flex-grow: 3; */
+}
+.item:nth-of-type(3) {
+    /* flex: 1 0 25%; */
+    /* ASK: co decyduje o wysokosci jak nie podana wysokosc tekstu? */
+    
+    /* height: 250px; */
+    /* ASK: czemu nie dziala 50% pomniejsz do wysokosci tekstu */
+    /* height: 50%; */
+    /* ASK: kazdy z osobna item mozemy ustawic ten przyklejony do end */
+    /* align-self: flex-end; */
+    /* ASK: trzba zwonic miejsce czy zajac sie wszystkimi na raz ID nie zmieniaja w trakcie operacji order */
+    /* order: 1; */
+}
+/* ASK : jest jakis problem z komentarzami w css przy uzyci shift+alt+a ja w srodku sa zakomentowane linie */
+/* ASK : zmieniamy na m-w:540px bo dubluje sie z zakresem 768-992px?! */
+/* @media (min-width: 768px) { */
+@media (min-width: 540px) {
+    .container {
+        /* ASK : zmieniamy dla 540px => 100% */
+        max-width: 100%;
+        /* max-width: 720px; */
+        background-color: red;
+        /* ASK : w @media na container wlacz border bo background-color przykryty, mozna wylaczyc w devtools backropund elementu nad zainteresuj sie z-index */
+        border: 5px solid black;
+        /* background-color: chartreuse; */
+         /* color: aquamarine; */
+    }
+    /* .item:nth-of-type(2) { */
+        /* ASK: tu oder nie dzial ustawiam w nth 2 order 1 i daje go na koniec czemu? */
+        /* order: 1; */
+    /* } */
+}  
+
+@media ( min-width: 768px) and (max-width: 992px) {
+    .container {
+        /* ASK: ten m-w:960px dubluje sie z kolejnym @media?! co zrobic */
+        max-width: 960px;
+        /* ASK: border zeby bylo widac. staly  w *body max-with blokowal @media  { */
+        border: 5px solid red;
+    
+        background-color: chartreuse;
+        color: aquamarine;
+    }  
+}
+/* ASK: tylko ten zapis z @media nie wlacza sie max-with 960 dla containera */
+@media ( min-width: 992px) {
+    .container {
+        background-color: blue;
+        /* ASK : powyzej 992 zmienia sie rozstaw i order */
+        flex-direction: row;
+        /* ASK : order:0 wroc na swoje miejsce?!  */
+        .item:nth-of-type(2) {order: 0;}
+        .item:nth-of-type(1) {flex-basis: 25%;}
+        /* ASK : taka forma zapisu ok jak poprawic srodkowy czyli nth 2 ma 50% w srodku */
+        .item:nth-of-type(2) {flex-basis: 50%;}
+        .item:nth-of-type(3) {flex-basis: 25%;}
+        /* ASK: nie dziala bo parent ma display:block zmien na flex info z devtools */
+        flex-basis: 33%;
+        /* ASK : jest w *body? m-w:450px to? @media 992 nie pokazuje w devtools */
+        /* ASK : wylaczam aby sie rozlewalo powyzej 900 with */
+        /* max-width: 960px; */
+        border: 5px solid greenyellow;
+    }
+}
+/* @media ( min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+} */
+
+
+
